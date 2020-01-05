@@ -1,15 +1,22 @@
 <template>
-    <NavHeader></NavHeader>
+  <div>
+    <order-header></order-header>
     <router-view></router-view>
-    <NavFooter></NavFooter>
+    <nav-footer></nav-footer>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "order"
-    }
+import OrderHeader from "./../components/OrderHeader";
+import NavFooter from "./../components/NavFooter";
+export default {
+  name: "order",
+  components: {
+    OrderHeader,
+    NavFooter
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

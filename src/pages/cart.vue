@@ -1,13 +1,23 @@
 <template>
-    
+  <div>
+    cart
+    <order-header></order-header>
+
+    <nav-footer></nav-footer>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "cart"
-    }
+import OrderHeader from "./../components/OrderHeader";
+import NavFooter from "./../components/NavFooter";
+export default {
+  name: "cart",
+  components: {
+    OrderHeader,
+    NavFooter
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
