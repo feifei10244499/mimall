@@ -7,10 +7,21 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 // import env from './env'
+/**
+ * import  是预编译时就加载
+ * require  执行时都会加载
+ * @type {boolean}
+ */
+//mock开关
+const mock = false;
+if(mock){
+    require('./mock/api')
+}
 
 //根据前端的跨域方式作调整  前端与后端面路径一致  /a/b  /api/a/b => （转发） /a/b
 //接口代理方式
 // axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5e133dcfd49ea764822551ec';
 //根据环境变量获取请求地址
 // axios.defaults.baseURL = env.baseURL;
 //超时时间

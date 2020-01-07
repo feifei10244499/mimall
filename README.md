@@ -49,3 +49,6 @@
     axios.defaults.baseURL = env.baseURL;
     //超时时间
     axios.defaults.timeout = 8000;
+
+###本地集成mockjs
+    cnpm i mockjs --save-dev

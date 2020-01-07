@@ -1,36 +1,40 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-// import storage from "./storage";
-export default {
-  name: "app",
-  components: {},
-  data() {
-    return {
-      res: {}
+    // import storage from "./storage";
+    export default {
+        name: "app",
+        components: {},
+        data() {
+            return {
+                res: {}
+            };
+        },
+        mounted() {
+            //本地加载请求静态文件json文件的形式
+            // this.axios.get("/mock/user/login.json").then(res => {
+            //   this.res = res;
+            // });
+
+            //本地集成mockjs实现数据mock
+            this.axios.get("/user/login").then(res => {
+                this.res = res;
+            });
+        }
     };
-  },
-  mounted() {
-    //本地加载请求静态文件json文件的形式
-    this.axios.get("/mock/user/login.json").then(res => {
-      this.res = res;
-    });
-   
-  }
-};
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
 </style>
