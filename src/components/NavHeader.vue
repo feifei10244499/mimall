@@ -39,7 +39,7 @@
                 margin-left: auto;
                 display: flex;
                 justify-content: space-between; //两边对其
-                align-items: center; //
+                align-items: center;
                 a {
                     display: inline-block;
                     color: #B0B0B0;
@@ -53,11 +53,15 @@
                     color: white;
 
                     .icon-cart {
-                        background: url("/imgs/icon-cart-checked.png") no-repeat;
+                        display: inline-block;
+                        width: 16px;
+                        height: 12px;
+                        margin-right: 4px;
+                        background: url("/imgs/icon-cart-checked.png") no-repeat center;
+                        background-size: contain;
                     }
                 }
             }
         }
-
     }
 </style>
