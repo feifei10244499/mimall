@@ -9,7 +9,7 @@ import App from './App.vue'
 // import env from './env'
 /**
  * import  是预编译时就加载
- * require  执行时都会加载
+ * require  执行时才会加载
  * @type {boolean}
  */
 //mock开关

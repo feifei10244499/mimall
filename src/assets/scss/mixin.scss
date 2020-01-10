@@ -1,0 +1,14 @@
+//flex复用
+@mixin flex($hov:space-between,$col:center) {
+  display: flex;
+  justify-content: $hov; // space-between两边对其
+  align-items: $col;
+}
+
+@mixin bgImg($wid:0,$hei:0,$url:'',$bgs:contain) {
+  display: inline-block;
+  width: $wid;
+  height: $hei;
+  background: url($url) no-repeat center;
+  background-size: $bgs;
+}

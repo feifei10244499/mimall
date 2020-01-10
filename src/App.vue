@@ -8,8 +8,8 @@
     export default {
         name: "app",
         components: {},
-        data() {
-        },
+        // data() {
+        // },
         mounted() {
             return {}
         }
