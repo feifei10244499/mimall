@@ -52,3 +52,6 @@
 
 ###本地集成mockjs
     cnpm i mockjs --save-dev
+
+###vue中使用swiper
+    安裝 cnpm install vue-awesome-swiper --save

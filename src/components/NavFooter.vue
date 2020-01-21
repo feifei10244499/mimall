@@ -30,29 +30,21 @@
         color: #999999;
         font-size: 12px;
         text-align: center;
-
         .footer-logo {
             margin-top: 46px;
             margin-bottom: 31px;
-
             img {
                 width: 53px;
                 height: 36px;
                 margin-bottom: 13px;
             }
-
-            p {
-                cursor: pointer;
-            }
         }
 
         .footer-link {
-
             a {
                 color: #999999;
                 display: inline-block;
             }
-
             span {
                 margin: 0 10px;
             }
@@ -60,7 +52,6 @@
 
         .copyright {
             margin-top: 10px;
-
             .mi {
                 color: #FF6600;
             }
