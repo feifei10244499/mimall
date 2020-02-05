@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div class="index">
         <div class="container">
             <div class="swiper-box">
@@ -80,15 +80,14 @@
                     <div class="list-box">
                         <div class="list" v-for="(arr,index) in phoneList" :key="index">
                             <div class="item" v-for="(item,j) in arr" :key="j">
-                                <span>新品</span>
+                                <span :class="{'new-pro':j%2==0}">新品</span>
                                 <div class="item-img">
-                                    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2c16238f786e4f93bdb175d7bf21aa47.jpg?thumb=1&w=250&h=250&f=webp&q=90"
-                                         alt="">
+                                    <img :src="item.mainImage" alt="">
                                 </div>
                                 <div class="item-info">
-                                    <h3>小米9</h3>
-                                    <p>骁龙855，索尼4800万超广角微距</p>
-                                    <p class="price">2999元</p>
+                                    <h3>{{item.name}}</h3>
+                                    <p>{{item.subtitle}}</p>
+                                    <p class="price" @click="addCart(item.id)">{{item.price}}元</p>
                                 </div>
                             </div>
                         </div>
@@ -97,18 +96,33 @@
             </div>
         </div>
         <ServiceBar></ServiceBar>
+        <Modal
+                title="提示"
+                sureText="查看购物车"
+                btnType="1"
+                modalType="middle"
+                v-bind:showModal="showModal"
+                v-on:submit="goToCart"
+                v-on:cancle="showModal=false"
+        >
+            <template v-slot:body>
+                <p>商品添加成功！</p>
+            </template>
+        </Modal>
     </div>
 </template>
 
 <script>
     import 'swiper/dist/css/swiper.css'
     import ServiceBar from './../components/ServiceBar'
+    import Modal from './../components/Modal'
     import {swiper, swiperSlide} from 'vue-awesome-swiper'
 
     export default {
         name: "index",
         components: {
             ServiceBar,
+            Modal,
             swiper,
             swiperSlide
         },
@@ -189,7 +203,40 @@
                     }
                 ],
 
-                phoneList: [[1, 1, 1, 1], [1, 1, 1, 1]]
+                phoneList: [],
+                showModal: false,
+            }
+        },
+        mounted() {
+            this.init();
+        },
+        //动态加载数据库数据
+        methods: {
+            init() {
+                this.axios.get('/products', {
+                    params: {
+                        categoryId: 100012,
+                        pageSize: 14,
+                    }
+                }).then((res) => {
+                    res.list = res.list.slice(6, 14);
+                    this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
+                })
+            },
+            addCart() {
+                this.showModal = true;
+                return;
+                // this.axios.post('/carts', {
+                //     productId: id,
+                //     selected: true
+                // }).then(() => {
+                //
+                // }).catch(() => {
+                //     this.showModal = true;
+                // })
+            },
+            goToCart() {
+                this.$router.push('/cart');
             }
         }
     }
@@ -359,13 +406,27 @@
                             background-color: $colorG;
                             text-align: center;
 
-                            span {
+                            span { //行内元素，设置inline-block，才能设置背景颜色
+                                display: inline-block;
+                                width: 67px;
+                                height: 24px;
+                                font-size: 14px;
+                                line-height: 24px;
+                                color: $colorG;
 
+                                &.new-pro {
+                                    background-color: #7ECF68;
+                                }
+
+                                &.kill-pro {
+                                    background-color: #E82626;
+                                }
                             }
 
                             .item-img {
                                 img {
-                                    height: 195px;
+                                    width: 165px;
+                                    height: 160px;
                                 }
                             }
 

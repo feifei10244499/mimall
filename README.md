@@ -55,3 +55,32 @@
 
 ###vue中使用swiper
     安裝 cnpm install vue-awesome-swiper --save
+
+###插槽
+新版本插槽 
+Modal中用 ```<slot name="body"></slot>``` 定义，
+使用的话:
+```
+<Modal
+            title="提示"
+            sureText="查看购物车"
+            btnType="1"
+            modalType="middle"
+            v-bind:showModal="true">
+        <template v-slot:body>
+            <p>商品添加成功！</p>
+        </template>
+</Modal>
+```
+ 需要用 ```<template v-slot:body> </template>```标签包上
+ 
+ ###父子组件点击事件
+ ```v-on:click="$emit('submit')```
+ 子组件点击事件需要传到父组件，父子传递是用emit传递，调用父组件的submit，所以在父组件中定义 @submit="goToCart"
+ 
+ ###动画顺序
+    slide-enter需要放在 active下面
+    &.slide-enter {
+        top: -100%;
+    }
+    

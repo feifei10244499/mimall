@@ -1,7 +1,7 @@
 //flex复用
 @mixin flex($hov:space-between,$col:center) {
   display: flex;
-  justify-content: $hov; // space-between两边对其
+  justify-content: $hov; //space-between两边对其
   align-items: $col;
 }
 
@@ -11,4 +11,22 @@
   height: $hei;
   background: url($url) no-repeat center;
   background-size: $bgs;
+}
+
+@mixin positionImg($pos:absolute,$top:0,$right:0,$wid:0,$hei:0,$url:'',$bgs:contain) {
+  position: $pos;
+  top: $top;
+  right: $right;
+  width: $wid;
+  height: $hei;
+  background: url($url) no-repeat center;
+  background-size: $bgs;
+}
+
+@mixin position($pos:absolute,$top:0,$left:0,$w:100%,$h:100%) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  width: $w;
+  height: $h;
 }

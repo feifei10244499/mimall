@@ -147,6 +147,7 @@
             login() {
                 this.$router.push('/login')
             },
+            ////动态加载数据库数据
             getProductList() {
                 this.axios.get('/products', {
                     params: {
