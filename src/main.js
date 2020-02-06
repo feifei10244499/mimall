@@ -6,6 +6,7 @@ import axios from 'axios'
 //将axios作用域对象挂载到vue实例止，方便我们用this调用
 import VueAxios from 'vue-axios'
 import App from './App.vue'
+import VueLazyLoad from 'vue-lazyload'
 // import env from './env'
 /**
  * import  是预编译时就加载
@@ -14,7 +15,7 @@ import App from './App.vue'
  */
 //mock开关
 const mock = false;
-if(mock){
+if (mock) {
     require('./mock/api')
 }
 
@@ -42,6 +43,9 @@ axios.interceptors.response.use(function (response) {
 
 // Vue.user()  加载插件  Vue.use(VueAxios, axios);  发请求时就可以用this调用
 Vue.use(VueAxios, axios);
+Vue.use(VueLazyLoad, {
+    loading: '/imgs/loading-svg/loading-bars.svg'
+});
 //生产环境的提示，默认false
 Vue.config.productionTip = false
 
