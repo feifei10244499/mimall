@@ -1,6 +1,12 @@
 # mimall
 #学习vue商场前端
 
+###搜索关键字
+生成伪类
+图片与文字在一行时居中
+space-between两边对其
+
+
 ###插件
     cnpm install vuex --save
     cnpm install vue-router --save

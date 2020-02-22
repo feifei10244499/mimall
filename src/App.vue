@@ -9,9 +9,23 @@
         name: "app",
         components: {},
         // data() {
+        //
         // },
         mounted() {
-            return {}
+            this.getUser();
+            this.getCartCount();
+        },
+        methods: {
+            getUser() {
+                this.axios.get('/user').then(() => {
+                    // todo  保存到vuex里面
+                })
+            },
+            getCartCount() {
+                this.axios.get('/carts/products/sum').then(() => {
+                    // todo  保存到vuex里面
+                })
+            }
         }
     };
 </script>

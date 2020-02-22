@@ -129,7 +129,7 @@
         name: "nav-header",
         data() {
             return {
-                username: 'feifei',
+                username: '',
                 phoneList: []
             }
         },
@@ -193,6 +193,7 @@
                     text-align: center;
                     background-color: #FF6600;
                     color: white;
+                    margin-right: 0;
 
                     .icon-cart {
                         margin-right: 4px;
