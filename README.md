@@ -90,3 +90,40 @@ Modal中用 ```<slot name="body"></slot>``` 定义，
         top: -100%;
     }
     
+###组件延迟
+    先加载app.vue组件 然后加载navheader组件，computed解决延迟问题
+     computed:{
+                username(){
+                    return this.$store.state.username;
+                }
+            },
+
+###...mapActions与...mapState
+	import {mapActions} from 'vuex';
+	...mapActions
+	getUser() {
+	    this.axios.get('/user').then((res) => {
+	        // todo  保存到vuex里面
+	        // this.$store.dispatch('saveUserName', res.username);
+			this.saveUserName(res.username);
+	    })
+	},
+	getCartCount() {
+	    this.axios.get('/carts/products/sum').then((res) => {
+	        // this.$store.dispatch('cartCount', res);
+			this.cartCount(res);
+	    })
+	},
+	...mapActions(['saveUserName','cartCount'])
+	
+	import {mapState} from 'vuex';
+	...mapState:
+	computed:{
+	    // username(){
+	    //     return this.$store.state.username;
+	    // },
+	    // cartcount(){
+	    //     return this.$store.state.cartcount;
+	    // },
+	    ...mapState(['username','cartcount'])
+	},
