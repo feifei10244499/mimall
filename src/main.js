@@ -5,6 +5,7 @@ import routers from './router'
 import axios from 'axios'
 //将axios作用域对象挂载到vue实例止，方便我们用this调用
 import VueAxios from 'vue-axios'
+import store from './store'
 import App from './App.vue'
 import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
@@ -56,6 +57,7 @@ Vue.use(VueLazyLoad, {
 Vue.config.productionTip = false
 
 new Vue({
+    store,
     //router,  两种方式都可以
     router: routers,
     render: h => h(App),

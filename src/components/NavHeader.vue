@@ -14,7 +14,7 @@
                     <a href="javascript:;" v-if="!username">注册</a>
                     <a href="javascript:;" v-if="username">{{username}}</a>
                     <a href="javascript:;" v-if="username">我的订单</a>
-                    <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车</a>
+                    <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车({{cartcount}})</a>
                 </div>
             </div>
         </div>
@@ -125,13 +125,22 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
     export default {
         name: "nav-header",
         data() {
             return {
-                username: '',
                 phoneList: []
             }
+        },
+        computed:{
+            // username(){
+            //     return this.$store.state.username;
+            // },
+            // cartcount(){
+            //     return this.$store.state.cartcount;
+            // },
+            ...mapState(['username','cartcount'])
         },
         //过滤器
         filters: {
